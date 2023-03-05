@@ -9,7 +9,6 @@ const App = () => {
   useEffect(() => {
     const fetchPokemonData = async () => {
       let res = await getAllPokemon(URL);
-      console.log(res);
       setLoading(false);
     };
     fetchPokemonData();
