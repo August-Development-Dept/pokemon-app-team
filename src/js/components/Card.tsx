@@ -43,7 +43,7 @@ const Card: React.FC<{ key: number; pokemon: any }> = ({ pokemon }) => {
   return (
     <CardStyle>
       <span className='pokemonNumber'>No. {pokemon.order}</span>
-      <img src={pokemon.image} alt="" />
+      <img src={pokemon.image} alt="ポケモンの画像" />
       <span className='border'></span>
       <h3>{pokemon.name}</h3>
     </CardStyle>
