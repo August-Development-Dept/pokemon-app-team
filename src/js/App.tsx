@@ -60,7 +60,7 @@ const App = () => {
           {pokemonData.map((pokemon: any, index) => {
             {pokemon}
             return (
-              <Card key={index} pokemon={pokemon}></Card>
+              <Card key={index} pokemon={pokemon} />
               )
             })}
         </div>
