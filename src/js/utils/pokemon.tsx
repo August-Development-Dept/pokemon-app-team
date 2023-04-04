@@ -7,9 +7,15 @@ const pokemon = () => {
   const [nextUrl, setNextUrl] = useState('')
   const [prevUrl, setPrevUrl] = useState('')
   const [pokemonData, setPokemonData] = useState([])
+  let ignore = false
   
   useEffect(() => {
-    getPokemonData(BASE_URL)
+    if (!ignore) {
+      getPokemonData(BASE_URL)
+    }
+    return () => {
+      ignore = true;
+    }
   }, [])
   
   // レンダリング時にこの関数を実行
