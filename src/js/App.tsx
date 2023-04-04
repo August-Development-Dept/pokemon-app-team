@@ -72,8 +72,8 @@ const App = () => {
           }
           {
             nextUrl
-            ? <button className='button ml-20' onClick={handleNextPage}>Next →</button>
-            : <button className='button ml-20 disabled' onClick={handleNextPage} disabled>Next →</button>
+            ? <button className='button ml-30' onClick={handleNextPage}>Next →</button>
+            : <button className='button ml-30 disabled' onClick={handleNextPage} disabled>Next →</button>
           }
         </div>
       </div>
