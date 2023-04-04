@@ -1,23 +1,83 @@
-import { useEffect, useState } from 'react';
-import { getAllPokemon } from './utils/pokemon';
+import styled from '@emotion/styled';
+import Card from './components/Card';
+import pokemon from './utils/pokemon';
 
 const App = () => {
-  const URL = 'https://pokeapi.co/api/v2/pokemon';
+  const {
+    loading,
+    pokemonData,
+    prevUrl,
+    nextUrl,
+    handleNextPage,
+    handlePrevPage
+  } = pokemon()
 
-  const [loading, setLoading] = useState(true);
+  const PokemonBook = styled.div`
+    .book {
+      text-align: center;
+      background-color: #ffffff;
+      padding: 20px;
+    }
+    .pokemonCardContainer {
+      width: 900px;
+      padding: 20px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .buttons {
+      margin-bottom: 100px;
+    }
+    .button {
+      border: none;
+      padding: 10px 30px;
+      border-radius: 5px;
+      background-color: #57e087;
+      color: #fff;
+      transition: all .2s;
+      :hover {
+        transform: scale(1.1);
+      }
+      &.disabled {
+        background-color: #a7a2a2;
+        :hover {
+          transform: scale(1);
+        }
+      }
+    }
+    .ml-30 {
+      margin-left: 30px;
+    }
+  `
 
-  useEffect(() => {
-    const fetchPokemonData = async () => {
-      let res = await getAllPokemon(URL);
-      setLoading(false);
-    };
-    fetchPokemonData();
-  }, []);
   return (
-    <>
-      <h1>Hello World</h1>
-      <div>{loading ? <h1>ロード中...</h1> : <h1>ポケモンデータを取得しました。</h1>}</div>
-    </>
+    <PokemonBook>
+      <div className='book'>
+        <h2>ポケモン図鑑</h2>
+        {loading && <p>Now Loading</p>}
+        <div className='pokemonCardContainer'>
+          {pokemonData.map((pokemon: any, index) => {
+            {pokemon}
+            return (
+              <Card key={index} pokemon={pokemon} />
+              )
+            })}
+        </div>
+        <div className='buttons'>
+          {
+            prevUrl
+            ? <button className='button' onClick={handlePrevPage}>← Prev</button>
+            : <button className='button disabled' onClick={handlePrevPage} disabled>← Prev</button>
+          }
+          {
+            nextUrl
+            ? <button className='button ml-30' onClick={handleNextPage}>Next →</button>
+            : <button className='button ml-30 disabled' onClick={handleNextPage} disabled>Next →</button>
+          }
+        </div>
+      </div>
+    </PokemonBook>
   );
 };
 
