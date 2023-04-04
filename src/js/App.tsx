@@ -55,7 +55,7 @@ const App = () => {
     <PokemonBook>
       <div className='book'>
         <h2>ポケモン図鑑</h2>
-        {loading ? <p>Now Loading</p> : ''}
+        {loading && <p>Now Loading</p>}
         <div className='pokemonCardContainer'>
           {pokemonData.map((pokemon: any, index) => {
             {pokemon}
