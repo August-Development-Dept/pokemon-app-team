@@ -46,7 +46,7 @@ const App = () => {
         }
       }
     }
-    .ml-20 {
+    .ml-30 {
       margin-left: 30px;
     }
   `
