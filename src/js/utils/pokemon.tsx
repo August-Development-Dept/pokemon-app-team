@@ -13,7 +13,7 @@ const pokemon = () => {
   }, [])
   
   // レンダリング時にこの関数を実行
-  const getPokemonData = async (url: any) => {
+  const getPokemonData = async (url: string) => {
     const allPokemonList = await getAllPokemon(url)
     loadPokemon(allPokemonList)
     setLoading(false)
