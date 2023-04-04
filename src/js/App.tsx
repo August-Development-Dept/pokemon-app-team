@@ -39,6 +39,12 @@ const App = () => {
       :hover {
         transform: scale(1.1);
       }
+      &.disabled {
+        background-color: #a7a2a2;
+        :hover {
+          transform: scale(1);
+        }
+      }
     }
     .ml-20 {
       margin-left: 30px;
@@ -59,8 +65,16 @@ const App = () => {
             })}
         </div>
         <div className='buttons'>
-          {prevUrl ? <button className='button' onClick={handlePrevPage}>← Prev</button> : ''}
-          {nextUrl ? <button className='button ml-20' onClick={handleNextPage}>Next →</button> : ''}
+          {
+            prevUrl
+            ? <button className='button' onClick={handlePrevPage}>← Prev</button>
+            : <button className='button disabled' onClick={handlePrevPage} disabled>← Prev</button>
+          }
+          {
+            nextUrl
+            ? <button className='button ml-20' onClick={handleNextPage}>Next →</button>
+            : <button className='button ml-20 disabled' onClick={handleNextPage} disabled>Next →</button>
+          }
         </div>
       </div>
     </PokemonBook>
