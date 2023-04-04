@@ -49,6 +49,7 @@ const App = () => {
     <PokemonBook>
       <div className='book'>
         <h2>ポケモン図鑑</h2>
+        {loading ? <p>Now Loading</p> : ''}
         <div className='pokemonCardContainer'>
           {pokemonData.map((pokemon: any, index) => {
             {pokemon}
@@ -57,7 +58,6 @@ const App = () => {
               )
             })}
         </div>
-        {loading ? <p>Now Loading</p> : <p>データ取得成功</p>}
         <div className='buttons'>
           {prevUrl ? <button className='button' onClick={handlePrevPage}>← Prev</button> : ''}
           {nextUrl ? <button className='button ml-20' onClick={handleNextPage}>Next →</button> : ''}
